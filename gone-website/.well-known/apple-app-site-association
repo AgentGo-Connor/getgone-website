@@ -1,0 +1,14 @@
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appID": "7BR5C6Z4PL.com.connor.gone",
+        "paths": [
+          "/item/*",
+          "/sale/*"
+        ]
+      }
+    ]
+  }
+}
