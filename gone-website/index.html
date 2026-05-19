@@ -624,6 +624,65 @@
     .footer-copy     { font-size: 12px; color: rgba(255,255,255,.28); }
 
     /* =========================================
+       LEGAL MODAL
+    ========================================= */
+    .legal-overlay {
+      display: none; position: fixed; inset: 0; z-index: 9000;
+      background: rgba(0,0,0,.72); backdrop-filter: blur(4px);
+      padding: 24px 16px; overflow-y: auto;
+    }
+    .legal-overlay.open { display: flex; align-items: flex-start; justify-content: center; }
+    .legal-modal {
+      background: var(--surface);
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 20px;
+      width: 100%; max-width: 720px;
+      margin: auto;
+      padding: 48px 48px 56px;
+      position: relative;
+    }
+    .legal-close {
+      position: absolute; top: 20px; right: 20px;
+      background: rgba(255,255,255,.07); border: none; border-radius: 50%;
+      width: 36px; height: 36px; cursor: pointer;
+      color: var(--muted); font-size: 18px; line-height: 36px; text-align: center;
+      transition: background .15s, color .15s;
+    }
+    .legal-close:hover { background: rgba(255,255,255,.14); color: var(--white); }
+    .legal-modal h1 {
+      font-size: clamp(20px, 4vw, 28px); font-weight: 800;
+      color: var(--yellow); margin: 0 0 6px;
+    }
+    .legal-updated { font-size: 13px; color: var(--muted); margin: 0 0 36px; }
+    .legal-modal h2 {
+      font-size: 15px; font-weight: 700; color: var(--white);
+      margin: 32px 0 10px; text-transform: uppercase; letter-spacing: .05em;
+    }
+    .legal-modal p, .legal-modal li {
+      font-size: 14px; line-height: 1.75; color: rgba(255,255,255,.72);
+      margin: 0 0 10px;
+    }
+    .legal-modal ul { padding-left: 20px; margin: 0 0 10px; }
+    .legal-modal li { margin: 0 0 4px; }
+    .legal-modal table { width: 100%; border-collapse: collapse; margin: 0 0 16px; }
+    .legal-modal th, .legal-modal td {
+      font-size: 13px; text-align: left;
+      padding: 10px 14px; border-bottom: 1px solid rgba(255,255,255,.07);
+      color: rgba(255,255,255,.72);
+    }
+    .legal-modal th { color: var(--white); font-weight: 700; }
+    .legal-contact {
+      margin-top: 40px; padding-top: 24px;
+      border-top: 1px solid rgba(255,255,255,.07);
+      font-size: 13px; color: var(--muted);
+    }
+    .legal-contact a { color: var(--yellow); text-decoration: none; }
+    .legal-contact a:hover { text-decoration: underline; }
+    @media (max-width: 600px) {
+      .legal-modal { padding: 36px 24px 44px; }
+    }
+
+    /* =========================================
        RESPONSIVE
     ========================================= */
     @media (max-width: 980px) {
@@ -981,8 +1040,8 @@
       <div class="footer-top">
         <a href="#top" class="footer-wordmark">Gone 📦</a>
         <div class="footer-links">
-          <a href="https://gist.github.com/AgentGo-Connor/2c10406136b71782c802a7cc8ecdacb8" target="_blank" rel="noopener noreferrer">Privacy Policy</a>
-          <a href="#">Terms of Use</a>
+          <a href="#" onclick="openLegal('privacy');return false;">Privacy Policy</a>
+          <a href="#" onclick="openLegal('terms');return false;">Terms of Use</a>
           <a href="mailto:hello@getgone.au">Contact</a>
         </div>
         <span class="footer-made">Made in Canberra, Australia 🇦🇺</span>
@@ -1021,6 +1080,256 @@
         }, 100);
       }
     })();
+  </script>
+
+  <!-- ==================== PRIVACY POLICY MODAL ==================== -->
+  <div id="modal-privacy" class="legal-overlay" role="dialog" aria-modal="true" aria-labelledby="privacy-title">
+    <div class="legal-modal">
+      <button class="legal-close" onclick="closeLegal('privacy')" aria-label="Close">✕</button>
+      <h1 id="privacy-title">Privacy Policy</h1>
+      <p class="legal-updated">Last updated: April 2026</p>
+
+      <h2>Overview</h2>
+      <p>Gone ("we", "our", "the app") is a hyperlocal freecycle app that connects people giving away free items with people nearby who want them. We take your privacy seriously and only collect what we need to make the app work.</p>
+
+      <h2>Who we are</h2>
+      <p>Gone is an independent app developed and operated by Connor Rorison, based in Yass Valley, NSW, Australia.</p>
+
+      <h2>What data we collect</h2>
+      <p><strong style="color:#fff">Account information</strong><br>When you create an account we collect:</p>
+      <ul>
+        <li>Email address (used for login and notifications)</li>
+        <li>Display name (shown nowhere publicly — internal use only)</li>
+      </ul>
+      <p><strong style="color:#fff">Location data</strong></p>
+      <ul>
+        <li>Your approximate GPS location to show items near you on the map</li>
+        <li>The location you choose when posting an item (shown publicly as an approximate location — exact address is only revealed to the #1 person in the queue)</li>
+        <li>Alert zone location if you set up notifications (Pro users only)</li>
+      </ul>
+      <p>We do not track your location in the background. Location is only accessed when the app is open and in use.</p>
+      <p><strong style="color:#fff">Item listings</strong><br>When you post an item we collect:</p>
+      <ul>
+        <li>Photo of the item</li>
+        <li>Item title and category</li>
+        <li>Description</li>
+        <li>Your GPS location at time of posting</li>
+      </ul>
+      <p>Posted items are visible publicly on the map to other users of the app.</p>
+      <p><strong style="color:#fff">Queue and messaging data</strong></p>
+      <ul>
+        <li>Your queue position and status for each item</li>
+        <li>Messages sent between you and an item lister or active queue member</li>
+      </ul>
+      <p>Messages are automatically and permanently deleted when your queue position changes, the item is marked as Gone, or the item expires after 24 hours.</p>
+      <p><strong style="color:#fff">Usage data</strong></p>
+      <ul>
+        <li>App activity (items posted, queues joined)</li>
+        <li>Device type and iOS version</li>
+        <li>Push notification token (Pro users only)</li>
+      </ul>
+      <p>We do not sell this data to anyone. We do not use this data for advertising.</p>
+
+      <h2>How we use your data</h2>
+      <ul>
+        <li>Show you items near your location</li>
+        <li>Let you post items for others to collect</li>
+        <li>Manage the queue system for item collection</li>
+        <li>Send notifications about items near you (Pro subscribers only, with your permission)</li>
+        <li>Enable messaging between users about specific items</li>
+        <li>Improve the app and fix bugs</li>
+      </ul>
+
+      <h2>Who we share your data with</h2>
+      <p><strong style="color:#fff">Supabase</strong> — our database and authentication provider. Your data is stored on servers in the Asia Pacific region. <a href="https://supabase.com/privacy" target="_blank" rel="noopener" style="color:var(--yellow)">supabase.com/privacy</a></p>
+      <p><strong style="color:#fff">Apple</strong> — authentication via Sign in with Apple. <a href="https://apple.com/privacy" target="_blank" rel="noopener" style="color:var(--yellow)">apple.com/privacy</a></p>
+      <p><strong style="color:#fff">Apple In-App Purchase</strong> — if you subscribe to Gone Pro, payment is processed entirely by Apple. We do not receive or store your payment details.</p>
+      <p>We do not share your data with any other third parties. We do not sell your data.</p>
+
+      <h2>Data retention</h2>
+      <table>
+        <tr><th>Data type</th><th>How long we keep it</th></tr>
+        <tr><td>Account data</td><td>Until you delete your account</td></tr>
+        <tr><td>Item listings</td><td>24 hours from posting, then deleted</td></tr>
+        <tr><td>Photos</td><td>Deleted when item expires or is marked Gone</td></tr>
+        <tr><td>Messages</td><td>Deleted immediately when conversation ends</td></tr>
+        <tr><td>Queue entries</td><td>Deleted when item expires or is collected</td></tr>
+        <tr><td>Location data</td><td>Not stored beyond the active session</td></tr>
+      </table>
+
+      <h2>Your rights</h2>
+      <ul>
+        <li>Access the personal data we hold about you</li>
+        <li>Request correction of inaccurate data</li>
+        <li>Request deletion of your account and all associated data</li>
+        <li>Withdraw consent for location access at any time via iOS Settings</li>
+        <li>Withdraw consent for push notifications at any time via iOS Settings</li>
+      </ul>
+      <p>To delete your account contact us at <a href="mailto:hello@gone.app" style="color:var(--yellow)">hello@gone.app</a> and we will process your request within 7 days. Account deletion is also available in Profile → Delete Account.</p>
+
+      <h2>Children</h2>
+      <p>Gone is not intended for users under 13. We do not knowingly collect data from children under 13.</p>
+
+      <h2>Security</h2>
+      <ul>
+        <li>Row Level Security (RLS) on all database tables</li>
+        <li>Encrypted connections (HTTPS/TLS) for all data in transit</li>
+        <li>Supabase authentication with secure session management</li>
+        <li>Automatic deletion of sensitive data after use</li>
+      </ul>
+
+      <h2>Changes to this policy</h2>
+      <p>We may update this policy from time to time. We will notify you of significant changes via email or in-app notification. Continued use of the app after changes constitutes acceptance of the updated policy.</p>
+
+      <div class="legal-contact">
+        <strong>Contact</strong><br>
+        Email: <a href="mailto:hello@gone.app">hello@gone.app</a><br>
+        Address: Yass Valley, NSW, Australia<br><br>
+        For complaints about how we handle your data you may also contact the Office of the Australian Information Commissioner (OAIC): <a href="https://oaic.gov.au" target="_blank" rel="noopener">oaic.gov.au</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== TERMS OF USE MODAL ==================== -->
+  <div id="modal-terms" class="legal-overlay" role="dialog" aria-modal="true" aria-labelledby="terms-title">
+    <div class="legal-modal">
+      <button class="legal-close" onclick="closeLegal('terms')" aria-label="Close">✕</button>
+      <h1 id="terms-title">Terms of Use</h1>
+      <p class="legal-updated">Last updated: April 2026</p>
+
+      <h2>Acceptance of terms</h2>
+      <p>By downloading or using Gone ("the app") you agree to these Terms of Use. If you do not agree, do not use the app.</p>
+
+      <h2>Who can use Gone</h2>
+      <p>You must be at least 13 years old to use Gone. If you are under 18 you must have permission from a parent or guardian.</p>
+
+      <h2>What Gone is</h2>
+      <p>Gone is a free, hyperlocal platform that allows users to post items they want to give away and for other users to collect those items. All items listed on Gone must be offered for free. Gone is not a marketplace for buying or selling.</p>
+
+      <h2>Your account</h2>
+      <p>You are responsible for:</p>
+      <ul>
+        <li>Keeping your login credentials secure</li>
+        <li>All activity that occurs under your account</li>
+        <li>Ensuring the information you provide is accurate and up to date</li>
+      </ul>
+      <p>We reserve the right to suspend or terminate accounts that violate these terms.</p>
+
+      <h2>Posting items</h2>
+      <p>When you post an item on Gone you agree that:</p>
+      <ul>
+        <li>The item is yours to give away</li>
+        <li>The item is legal to give away in Australia</li>
+        <li>The item is accurately described</li>
+        <li>You will make the item available to the person who reaches #1 in the queue</li>
+        <li>You will mark the item as Gone once it has been collected</li>
+      </ul>
+      <p>We reserve the right to remove any listing that violates these terms or that we consider inappropriate at our sole discretion.</p>
+
+      <h2>Prohibited items</h2>
+      <p>You must not post any of the following:</p>
+      <ul>
+        <li>Weapons, firearms, or ammunition</li>
+        <li>Illegal substances or drug paraphernalia</li>
+        <li>Stolen goods</li>
+        <li>Items that are unsafe, broken beyond use, or hazardous without disclosure</li>
+        <li>Adult or explicit content</li>
+        <li>Animals or live creatures</li>
+        <li>Any item that is illegal to give away under Australian law</li>
+      </ul>
+      <p>Posting prohibited items will result in immediate removal of the listing and may result in account termination.</p>
+
+      <h2>Collecting items</h2>
+      <p>When you join a queue and reach #1 you agree to:</p>
+      <ul>
+        <li>Make a genuine attempt to collect the item</li>
+        <li>Collect within the time window provided (2 hours from reaching #1, extendable by the lister)</li>
+        <li>Not claim items you have no intention of collecting</li>
+      </ul>
+      <p>Repeated no-shows may result in account suspension.</p>
+
+      <h2>Messaging</h2>
+      <p>The in-app messaging feature is provided solely to facilitate the handover of listed items. You agree not to use messaging to:</p>
+      <ul>
+        <li>Harass, threaten, or abuse other users</li>
+        <li>Send spam or unsolicited promotional content</li>
+        <li>Share personal contact details before both parties are comfortable doing so</li>
+        <li>Conduct any activity unrelated to collecting a listed item</li>
+      </ul>
+      <p>Messages are automatically deleted once a transaction is complete or cancelled.</p>
+
+      <h2>Location</h2>
+      <p>Gone uses your location to show you nearby items and to place your listings on the map. Your exact address is never shown publicly — only an approximate location is visible to other users. Your exact address is only revealed to the person who reaches #1 in the queue for your item.</p>
+
+      <h2>Gone Pro subscription</h2>
+      <p>Gone Pro is a monthly subscription. It includes:</p>
+      <ul>
+        <li>Instant push notifications for new items</li>
+        <li>Early access to new listings (5 min before free users)</li>
+        <li>Unlimited item listings</li>
+        <li>Custom alert zones up to 10km</li>
+      </ul>
+      <p>Subscriptions are managed through Apple's In-App Purchase system. Billing, cancellation, and refunds are handled by Apple in accordance with their terms. To cancel, go to iOS Settings → Apple ID → Subscriptions.</p>
+
+      <h2>User conduct</h2>
+      <p>You agree not to:</p>
+      <ul>
+        <li>Use the app for any unlawful purpose</li>
+        <li>Impersonate another person or entity</li>
+        <li>Attempt to gain unauthorised access to any part of the app or its infrastructure</li>
+        <li>Interfere with or disrupt the app or its servers</li>
+        <li>Use automated tools, bots, or scrapers to access the app</li>
+        <li>Reverse engineer or attempt to extract the source code of the app</li>
+      </ul>
+
+      <h2>Disclaimer</h2>
+      <p>Gone is provided "as is" without warranties of any kind. We do not guarantee the accuracy of any listing, the condition of any item, that any item will be available when you arrive, or uninterrupted operation of the app. All transactions are between users directly. Gone accepts no liability for any loss, damage, or dispute arising from use of the app.</p>
+
+      <h2>Safety</h2>
+      <p>You are responsible for your own safety when meeting other users to exchange items. We recommend meeting in public places where possible and trusting your instincts. Gone accepts no liability for incidents that occur during item exchanges.</p>
+
+      <h2>Intellectual property</h2>
+      <p>All content, design, and code within the Gone app is owned by Connor Rorison unless otherwise stated. You may not copy, reproduce, or distribute any part of the app without written permission.</p>
+      <p>Content you post (photos, descriptions) remains yours. By posting it you grant Gone a non-exclusive licence to display that content within the app for the purpose of facilitating item collection.</p>
+
+      <h2>Termination</h2>
+      <p>We may suspend or terminate your access to Gone at any time for any reason including but not limited to violation of these terms. You may delete your account at any time via Profile → Delete Account.</p>
+
+      <h2>Changes to these terms</h2>
+      <p>We may update these terms from time to time. Continued use of the app after changes constitutes acceptance of the updated terms. We will notify you of significant changes via email or in-app notification.</p>
+
+      <h2>Governing law</h2>
+      <p>These terms are governed by the laws of New South Wales, Australia. Any disputes will be subject to the exclusive jurisdiction of the courts of New South Wales.</p>
+
+      <div class="legal-contact">
+        <strong>Contact</strong><br>
+        Email: <a href="mailto:hello@gone.app">hello@gone.app</a><br>
+        Address: Yass Valley, NSW, Australia
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function openLegal(id) {
+      document.getElementById('modal-' + id).classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeLegal(id) {
+      document.getElementById('modal-' + id).classList.remove('open');
+      document.body.style.overflow = '';
+    }
+    document.querySelectorAll('.legal-overlay').forEach(function(el) {
+      el.addEventListener('click', function(e) {
+        if (e.target === el) closeLegal(el.id.replace('modal-', ''));
+      });
+    });
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        document.querySelectorAll('.legal-overlay.open').forEach(function(el) {
+          closeLegal(el.id.replace('modal-', ''));
+        });
+      }
+    });
   </script>
 
 </body>
