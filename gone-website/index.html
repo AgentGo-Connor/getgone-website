@@ -1087,10 +1087,10 @@
     <div class="legal-modal">
       <button class="legal-close" onclick="closeLegal('privacy')" aria-label="Close">✕</button>
       <h1 id="privacy-title">Privacy Policy</h1>
-      <p class="legal-updated">Last updated: April 2026</p>
+      <p class="legal-updated">Last updated: May 2026</p>
 
       <h2>Overview</h2>
-      <p>Gone ("we", "our", "the app") is a hyperlocal freecycle app that connects people giving away free items with people nearby who want them. We take your privacy seriously and only collect what we need to make the app work.</p>
+      <p>Gone ("we", "our", "the app") is a hyperlocal marketplace app that connects people giving away free items or selling locally with people nearby. We take your privacy seriously and only collect what we need to make the app work.</p>
 
       <h2>Who we are</h2>
       <p>Gone is an independent app developed and operated by Connor Rorison, based in Yass Valley, NSW, Australia.</p>
@@ -1113,15 +1113,23 @@
         <li>Photo of the item</li>
         <li>Item title and category</li>
         <li>Description</li>
+        <li>Price (for paid listings)</li>
         <li>Your GPS location at time of posting</li>
       </ul>
-      <p>Posted items are visible publicly on the map to other users of the app.</p>
+      <p>Posted items are visible publicly on the map to other users of the app. Paid listings include a price set by the lister. No payments are processed through the app.</p>
+      <p><strong style="color:#fff">Garage sale listings</strong><br>When you post a garage sale we collect:</p>
+      <ul>
+        <li>Address or approximate location of the sale</li>
+        <li>Date and time of the sale</li>
+        <li>Description and any items you choose to list</li>
+      </ul>
+      <p>Garage sale listings are visible publicly on the map to nearby users.</p>
       <p><strong style="color:#fff">Queue and messaging data</strong></p>
       <ul>
         <li>Your queue position and status for each item</li>
         <li>Messages sent between you and an item lister or active queue member</li>
       </ul>
-      <p>Messages are automatically and permanently deleted when your queue position changes, the item is marked as Gone, or the item expires after 24 hours.</p>
+      <p>Messages are automatically and permanently deleted when your queue position changes, the item is marked as Gone, or the item expires.</p>
       <p><strong style="color:#fff">Usage data</strong></p>
       <ul>
         <li>App activity (items posted, queues joined)</li>
@@ -1132,8 +1140,8 @@
 
       <h2>How we use your data</h2>
       <ul>
-        <li>Show you items near your location</li>
-        <li>Let you post items for others to collect</li>
+        <li>Show you items and garage sales near your location</li>
+        <li>Let you post free items, paid items, and garage sales for others to find</li>
         <li>Manage the queue system for item collection</li>
         <li>Send notifications about items near you (Pro subscribers only, with your permission)</li>
         <li>Enable messaging between users about specific items</li>
@@ -1144,13 +1152,15 @@
       <p><strong style="color:#fff">Supabase</strong> — our database and authentication provider. Your data is stored on servers in the Asia Pacific region. <a href="https://supabase.com/privacy" target="_blank" rel="noopener" style="color:var(--yellow)">supabase.com/privacy</a></p>
       <p><strong style="color:#fff">Apple</strong> — authentication via Sign in with Apple. <a href="https://apple.com/privacy" target="_blank" rel="noopener" style="color:var(--yellow)">apple.com/privacy</a></p>
       <p><strong style="color:#fff">Apple In-App Purchase</strong> — if you subscribe to Gone Pro, payment is processed entirely by Apple. We do not receive or store your payment details.</p>
+      <p>For paid item transactions, all arrangements and payments are made directly between users outside the app. Gone does not process, facilitate, or take any part in payments between users.</p>
       <p>We do not share your data with any other third parties. We do not sell your data.</p>
 
       <h2>Data retention</h2>
       <table>
         <tr><th>Data type</th><th>How long we keep it</th></tr>
         <tr><td>Account data</td><td>Until you delete your account</td></tr>
-        <tr><td>Item listings</td><td>24 hours from posting, then deleted</td></tr>
+        <tr><td>Item listings</td><td>Up to 7 days from posting, then deleted</td></tr>
+        <tr><td>Garage sale listings</td><td>Up to 7 days from posting, then deleted</td></tr>
         <tr><td>Photos</td><td>Deleted when item expires or is marked Gone</td></tr>
         <tr><td>Messages</td><td>Deleted immediately when conversation ends</td></tr>
         <tr><td>Queue entries</td><td>Deleted when item expires or is collected</td></tr>
