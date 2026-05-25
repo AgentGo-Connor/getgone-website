@@ -147,25 +147,37 @@
       overflow: hidden; padding: 120px 36px 100px;
     }
 
-    /* Dot grid */
-    .hero::before {
-      content: '';
-      position: absolute; inset: -12%;
-      background-image: radial-gradient(circle, rgba(255,217,61,0.22) 1.5px, transparent 0);
-      background-size: 40px 40px;
-      animation: mapDrift 32s linear infinite;
+    /* Floating emoji field */
+    .emoji-field {
+      position: absolute; inset: 0;
       z-index: 0; pointer-events: none;
+      overflow: hidden;
     }
 
-    /* Radial vignette over grid */
+    .emoji-particle {
+      position: absolute;
+      bottom: -72px;
+      line-height: 1;
+      user-select: none;
+      pointer-events: none;
+      animation: floatUp linear infinite;
+      will-change: transform, opacity;
+    }
+
+    @keyframes floatUp {
+      0%   { transform: translateY(0)               translateX(0);          opacity: 0; }
+      8%   { opacity: var(--ep-opacity, 0.3); }
+      88%  { opacity: var(--ep-opacity, 0.3); }
+      100% { transform: translateY(calc(-100vh - 144px)) translateX(var(--ep-drift, 0px)); opacity: 0; }
+    }
+
+    /* Radial vignette over emojis */
     .hero::after {
       content: ''; position: absolute; inset: 0;
       background: radial-gradient(ellipse 80% 70% at 50% 50%,
         transparent 0%, rgba(26,26,46,.55) 52%, var(--bg) 100%);
       z-index: 1; pointer-events: none;
     }
-
-    @keyframes mapDrift { to { background-position: 40px 40px; } }
 
     /* Glow orbs */
     .orb {
@@ -722,8 +734,9 @@
     }
 
     @media (prefers-reduced-motion: reduce) {
-      .hero::before, .orb, .lcard,
+      .orb, .lcard, .emoji-particle,
       .ticker-track, .badge-dot, .scroll-hint { animation: none; }
+      .emoji-particle { opacity: 0; }
       .reveal { opacity: 1; transform: none; transition: none; }
       * { transition-duration: .01ms !important; }
     }
@@ -756,6 +769,7 @@
 
   <!-- ==================== HERO ==================== -->
   <section class="hero" id="top">
+    <div class="emoji-field" id="emoji-field" aria-hidden="true"></div>
     <div class="orb orb-1"></div>
     <div class="orb orb-2"></div>
     <div class="orb orb-3"></div>
@@ -1347,6 +1361,40 @@
         });
       }
     });
+  </script>
+
+  <script>
+    /* ---------- Floating emoji background ---------- */
+    (function() {
+      var emojis = ['🛋️','👗','📺','🚲','📦','🪴','🧥','📚','🍳','🏋️','🧸','🪑','👟','🎮','🖼️'];
+      var field  = document.getElementById('emoji-field');
+      var count  = 18;
+
+      for (var i = 0; i < count; i++) {
+        var el      = document.createElement('span');
+        el.className = 'emoji-particle';
+
+        var emoji    = emojis[i % emojis.length];
+        var left     = Math.random() * 96;
+        var size     = 16 + Math.random() * 26;
+        var duration = 18 + Math.random() * 16;
+        var delay    = -(Math.random() * duration);
+        var drift    = (Math.random() - 0.5) * 54;
+        var opacity  = 0.18 + Math.random() * 0.22;
+
+        el.textContent = emoji;
+        el.style.cssText = [
+          'left:'                 + left.toFixed(1)     + '%;',
+          'font-size:'            + size.toFixed(1)     + 'px;',
+          'animation-duration:'   + duration.toFixed(1) + 's;',
+          'animation-delay:'      + delay.toFixed(2)    + 's;',
+          '--ep-drift:'           + drift.toFixed(1)    + 'px;',
+          '--ep-opacity:'         + opacity.toFixed(3)  + ';'
+        ].join('');
+
+        field.appendChild(el);
+      }
+    })();
   </script>
 
 </body>
