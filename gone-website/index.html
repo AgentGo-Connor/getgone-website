@@ -3,12 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Gone — Free stuff. Right now. Near you.</title>
-  <meta name="description" content="The fastest way to give away and find free stuff in your neighbourhood. No haggling. No payments. No landfill.">
+  <title>Gone — Your Trash. Another's Treasure.</title>
+  <meta name="description" content="Your trash is another's treasure. Give away free stuff near you, or find something great on your street. No haggling. No payments. No landfill.">
   <meta name="theme-color" content="#1A1A2E">
-  <meta property="og:title" content="Gone — Free stuff. Right now. Near you.">
-  <meta property="og:description" content="The fastest way to give away and find free stuff in your neighbourhood.">
+  <meta property="og:title" content="Gone — Your Trash. Another's Treasure.">
+  <meta property="og:description" content="Your trash is another's treasure. Give away free stuff near you, or find something great on your street.">
   <meta property="og:type" content="website">
+  <meta property="og:image" content="images/G-App-Icon.png">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -109,9 +110,11 @@
       display: flex; align-items: center;
       justify-content: space-between; height: 68px;
     }
-    .wordmark {
-      font-size: 21px; font-weight: 800; color: var(--yellow);
-      letter-spacing: -.5px;
+    .wordmark img {
+      height: 28px; width: auto; display: block;
+    }
+    .footer-wordmark img {
+      height: 24px; width: auto; display: block;
     }
     .nav-links {
       display: flex; align-items: center; gap: 28px;
@@ -739,7 +742,9 @@
   <!-- ==================== NAV ==================== -->
   <nav id="nav">
     <div class="container nav-inner">
-      <a href="#top" class="wordmark">Gone 📦</a>
+      <a href="#top" class="wordmark">
+        <img src="images/G-Logo-Primary-Yellow.png" alt="Gone">
+      </a>
       <div class="nav-links">
         <a href="#how-it-works" class="nav-link">How it works</a>
         <a href="#features" class="nav-link">Features</a>
@@ -805,8 +810,8 @@
         <span class="badge-dot"></span>
         Live now in Canberra
       </div>
-      <h1 class="hero-hl">Free stuff.<br>Right now. Near you.</h1>
-      <p class="hero-sub">The fastest way to give away and find free stuff in your neighbourhood. No haggling. No payments. No landfill.</p>
+      <h1 class="hero-hl">Your Trash.<br>Another's Treasure.</h1>
+      <p class="hero-sub">Give away free stuff near you, or find something great on your street. No haggling. No payments. No landfill.</p>
       <div class="hero-btns">
         <a href="#" class="btn-appstore">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -980,7 +985,7 @@
   <!-- ==================== MANIFESTO STRIP ==================== -->
   <div class="manifesto reveal">
     <blockquote class="manifesto-quote">
-      "One person's clutter is another person's <em>treasure</em> — and it doesn't need to cost a thing."
+      "<em>Your trash.</em> Another's treasure. It really is that simple."
     </blockquote>
     <p class="manifesto-sub">Gone is built on a simple idea: free stuff should be dead easy to give away and dead easy to find.</p>
   </div>
@@ -1038,7 +1043,9 @@
   <footer>
     <div class="container">
       <div class="footer-top">
-        <a href="#top" class="footer-wordmark">Gone 📦</a>
+        <a href="#top" class="footer-wordmark">
+          <img src="images/G-Logo-Primary-Yellow.png" alt="Gone">
+        </a>
         <div class="footer-links">
           <a href="#" onclick="openLegal('privacy');return false;">Privacy Policy</a>
           <a href="#" onclick="openLegal('terms');return false;">Terms of Use</a>
