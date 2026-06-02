@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Policy — Gone</title>
+  <meta name="description" content="Gone's Privacy Policy. We only collect what we need to make the app work.">
+  <meta name="theme-color" content="#1A1A2E">
+  <meta name="robots" content="noindex">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:      #1A1A2E;
+      --surface: #16213E;
+      --surface2: #1c2a4a;
+      --yellow:  #FFD93D;
+      --coral:   #FF6B6B;
+      --white:   #FFFFFF;
+      --muted:   rgba(255,255,255,0.5);
+      --pill:    9999px;
+      --r-xl:    28px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg);
+      color: var(--white);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 36px;
+    }
+
+    /* NAV */
+    #nav {
+      position: sticky; top: 0; left: 0; right: 0; z-index: 500;
+      background: rgba(26,26,46,0.92);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border-bottom: 1px solid rgba(255,217,61,0.07);
+    }
+    .nav-inner {
+      display: flex; align-items: center;
+      justify-content: space-between; height: 68px;
+    }
+    .wordmark img { height: 28px; width: auto; display: block; }
+    .nav-cta {
+      display: inline-flex; align-items: center;
+      height: 40px; padding: 0 20px;
+      background: var(--yellow); color: var(--bg);
+      font-family: inherit; font-size: 14px; font-weight: 700;
+      border-radius: var(--pill);
+      transition: opacity .15s, transform .15s;
+    }
+    .nav-cta:hover { opacity: .88; transform: translateY(-1px); }
+    .nav-back {
+      font-size: 14px; font-weight: 600; color: var(--muted);
+      transition: color .15s; display: flex; align-items: center; gap: 6px;
+    }
+    .nav-back:hover { color: var(--white); }
+
+    /* PAGE HEADER */
+    .page-header {
+      padding: 72px 36px 56px;
+      border-bottom: 1px solid rgba(255,255,255,.05);
+    }
+    .page-header-inner { max-width: 720px; margin: 0 auto; }
+    .back-crumb {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 13px; font-weight: 600; color: var(--muted);
+      margin-bottom: 24px; transition: color .15s;
+    }
+    .back-crumb:hover { color: var(--yellow); }
+    .page-title {
+      font-size: clamp(36px, 5vw, 56px);
+      font-weight: 800; letter-spacing: -2px;
+      line-height: 1.05; color: var(--yellow);
+      margin-bottom: 10px;
+    }
+    .page-updated { font-size: 14px; color: var(--muted); }
+
+    /* CONTENT */
+    .page-content {
+      padding: 64px 36px 96px;
+    }
+    .content-inner {
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    .content-inner h2 {
+      font-size: 13px; font-weight: 700;
+      letter-spacing: 2px; text-transform: uppercase;
+      color: var(--yellow); margin: 48px 0 14px;
+    }
+    .content-inner h2:first-child { margin-top: 0; }
+
+    .content-inner p {
+      font-size: 15px; line-height: 1.8;
+      color: rgba(255,255,255,.72); margin: 0 0 12px;
+    }
+    .content-inner strong { color: var(--white); font-weight: 700; }
+    .content-inner ul {
+      padding-left: 22px; margin: 0 0 14px;
+    }
+    .content-inner li {
+      font-size: 15px; line-height: 1.8;
+      color: rgba(255,255,255,.72); margin: 0 0 5px;
+    }
+    .content-inner table {
+      width: 100%; border-collapse: collapse; margin: 0 0 14px;
+    }
+    .content-inner th,
+    .content-inner td {
+      font-size: 14px; text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid rgba(255,255,255,.07);
+      color: rgba(255,255,255,.72);
+    }
+    .content-inner th { color: var(--white); font-weight: 700; }
+    .content-inner a { color: var(--yellow); }
+    .content-inner a:hover { text-decoration: underline; }
+
+    .legal-contact {
+      margin-top: 56px; padding-top: 28px;
+      border-top: 1px solid rgba(255,255,255,.07);
+      font-size: 14px; color: var(--muted);
+      line-height: 1.8;
+    }
+    .legal-contact strong { color: var(--white); }
+
+    /* FOOTER */
+    footer {
+      background: var(--surface);
+      padding: 56px 36px 36px;
+      border-top: 1px solid rgba(255,255,255,.05);
+    }
+    .footer-top {
+      display: flex; align-items: center;
+      justify-content: space-between; flex-wrap: wrap;
+      gap: 20px; margin-bottom: 32px;
+      padding-bottom: 32px;
+      border-bottom: 1px solid rgba(255,255,255,.06);
+    }
+    .footer-wordmark img { height: 24px; width: auto; display: block; }
+    .footer-links    { display: flex; gap: 24px; flex-wrap: wrap; }
+    .footer-links a  { font-size: 14px; color: var(--muted); transition: color .15s; }
+    .footer-links a:hover { color: var(--white); }
+    .footer-made     { font-size: 14px; color: var(--muted); }
+    .footer-bottom   { text-align: center; }
+    .footer-copy     { font-size: 12px; color: rgba(255,255,255,.28); }
+
+    @media (max-width: 720px) {
+      .container      { padding: 0 20px; }
+      .page-header,
+      .page-content   { padding-left: 20px; padding-right: 20px; }
+      .footer-top     { flex-direction: column; align-items: center; text-align: center; }
+      .footer-links   { justify-content: center; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAV -->
+  <nav id="nav">
+    <div class="container nav-inner">
+      <a href="/" class="wordmark">
+        <img src="images/G-Logo-Primary-Yellow.png" alt="Gone">
+      </a>
+      <a href="#" class="nav-cta">Download</a>
+    </div>
+  </nav>
+
+  <!-- PAGE HEADER -->
+  <header class="page-header">
+    <div class="page-header-inner">
+      <a href="/" class="back-crumb">
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+          <path d="M10 3L5 8l5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        Back to Gone
+      </a>
+      <h1 class="page-title">Privacy Policy</h1>
+      <p class="page-updated">Last updated: May 2026</p>
+    </div>
+  </header>
+
+  <!-- CONTENT -->
+  <main class="page-content">
+    <div class="content-inner">
+
+      <h2>Overview</h2>
+      <p>Gone ("we", "our", "the app") is a hyperlocal marketplace app that connects people giving away free items or selling locally with people nearby. We take your privacy seriously and only collect what we need to make the app work.</p>
+
+      <h2>Who we are</h2>
+      <p>Gone is an independent app developed and operated by Connor Rorison, based in Yass Valley, NSW, Australia.</p>
+
+      <h2>What data we collect</h2>
+      <p><strong>Account information</strong><br>When you create an account we collect:</p>
+      <ul>
+        <li>Email address (used for login and notifications)</li>
+        <li>Display name (shown nowhere publicly — internal use only)</li>
+      </ul>
+
+      <p><strong>Location data</strong></p>
+      <ul>
+        <li>Your approximate GPS location to show items near you on the map</li>
+        <li>The location you choose when posting an item (shown publicly as an approximate location — exact address is only revealed to the #1 person in the queue)</li>
+        <li>Alert zone location if you set up notifications (Pro users only)</li>
+      </ul>
+      <p>We do not track your location in the background. Location is only accessed when the app is open and in use.</p>
+
+      <p><strong>Item listings</strong><br>When you post an item we collect:</p>
+      <ul>
+        <li>Photo of the item</li>
+        <li>Item title and category</li>
+        <li>Description</li>
+        <li>Price (for paid listings)</li>
+        <li>Your GPS location at time of posting</li>
+      </ul>
+      <p>Posted items are visible publicly on the map to other users of the app. Paid listings include a price set by the lister. No payments are processed through the app.</p>
+
+      <p><strong>Garage sale listings</strong><br>When you post a garage sale we collect:</p>
+      <ul>
+        <li>Address or approximate location of the sale</li>
+        <li>Date and time of the sale</li>
+        <li>Description and any items you choose to list</li>
+      </ul>
+      <p>Garage sale listings are visible publicly on the map to nearby users.</p>
+
+      <p><strong>Queue and messaging data</strong></p>
+      <ul>
+        <li>Your queue position and status for each item</li>
+        <li>Messages sent between you and an item lister or active queue member</li>
+      </ul>
+      <p>Messages are automatically and permanently deleted when your queue position changes, the item is marked as Gone, or the item expires.</p>
+
+      <p><strong>Usage data</strong></p>
+      <ul>
+        <li>App activity (items posted, queues joined)</li>
+        <li>Device type and iOS version</li>
+        <li>Push notification token (Pro users only)</li>
+      </ul>
+      <p>We do not sell this data to anyone. We do not use this data for advertising.</p>
+
+      <h2>How we use your data</h2>
+      <ul>
+        <li>Show you items and garage sales near your location</li>
+        <li>Let you post free items, paid items, and garage sales for others to find</li>
+        <li>Manage the queue system for item collection</li>
+        <li>Send notifications about items near you (Pro subscribers only, with your permission)</li>
+        <li>Enable messaging between users about specific items</li>
+        <li>Improve the app and fix bugs</li>
+      </ul>
+
+      <h2>Who we share your data with</h2>
+      <p><strong>Supabase</strong> — our database and authentication provider. Your data is stored on servers in the Asia Pacific region. <a href="https://supabase.com/privacy" target="_blank" rel="noopener">supabase.com/privacy</a></p>
+      <p><strong>Apple</strong> — authentication via Sign in with Apple. <a href="https://apple.com/privacy" target="_blank" rel="noopener">apple.com/privacy</a></p>
+      <p><strong>Apple In-App Purchase</strong> — if you subscribe to Gone Pro, payment is processed entirely by Apple. We do not receive or store your payment details.</p>
+      <p>For paid item transactions, all arrangements and payments are made directly between users outside the app. Gone does not process, facilitate, or take any part in payments between users.</p>
+      <p>We do not share your data with any other third parties. We do not sell your data.</p>
+
+      <h2>Data retention</h2>
+      <table>
+        <tr><th>Data type</th><th>How long we keep it</th></tr>
+        <tr><td>Account data</td><td>Until you delete your account</td></tr>
+        <tr><td>Item listings</td><td>Up to 7 days from posting, then deleted</td></tr>
+        <tr><td>Garage sale listings</td><td>Up to 7 days from posting, then deleted</td></tr>
+        <tr><td>Photos</td><td>Deleted when item expires or is marked Gone</td></tr>
+        <tr><td>Messages</td><td>Deleted immediately when conversation ends</td></tr>
+        <tr><td>Queue entries</td><td>Deleted when item expires or is collected</td></tr>
+        <tr><td>Location data</td><td>Not stored beyond the active session</td></tr>
+      </table>
+
+      <h2>Your rights</h2>
+      <ul>
+        <li>Access the personal data we hold about you</li>
+        <li>Request correction of inaccurate data</li>
+        <li>Request deletion of your account and all associated data</li>
+        <li>Withdraw consent for location access at any time via iOS Settings</li>
+        <li>Withdraw consent for push notifications at any time via iOS Settings</li>
+      </ul>
+      <p>To delete your account contact us at <a href="mailto:hello@getgone.au">hello@getgone.au</a> and we will process your request within 7 days. Account deletion is also available in Profile → Delete Account.</p>
+
+      <h2>Children</h2>
+      <p>Gone is not intended for users under 13. We do not knowingly collect data from children under 13.</p>
+
+      <h2>Security</h2>
+      <ul>
+        <li>Row Level Security (RLS) on all database tables</li>
+        <li>Encrypted connections (HTTPS/TLS) for all data in transit</li>
+        <li>Supabase authentication with secure session management</li>
+        <li>Automatic deletion of sensitive data after use</li>
+      </ul>
+
+      <h2>Changes to this policy</h2>
+      <p>We may update this policy from time to time. We will notify you of significant changes via email or in-app notification. Continued use of the app after changes constitutes acceptance of the updated policy.</p>
+
+      <div class="legal-contact">
+        <strong>Contact</strong><br>
+        Email: <a href="mailto:hello@getgone.au">hello@getgone.au</a><br>
+        Address: Yass Valley, NSW, Australia<br><br>
+        For complaints about how we handle your data you may also contact the Office of the Australian Information Commissioner (OAIC): <a href="https://oaic.gov.au" target="_blank" rel="noopener">oaic.gov.au</a>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-top">
+        <a href="/" class="footer-wordmark">
+          <img src="images/G-Logo-Primary-Yellow.png" alt="Gone">
+        </a>
+        <div class="footer-links">
+          <a href="privacy.html">Privacy Policy</a>
+          <a href="terms.html">Terms of Use</a>
+          <a href="mailto:hello@getgone.au">Contact</a>
+        </div>
+        <span class="footer-made">Made in Canberra, Australia 🇦🇺</span>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copy">© 2026 Gone. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

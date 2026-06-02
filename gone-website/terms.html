@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Terms of Use — Gone</title>
+  <meta name="description" content="Gone's Terms of Use. The rules for using the Gone app.">
+  <meta name="theme-color" content="#1A1A2E">
+  <meta name="robots" content="noindex">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:      #1A1A2E;
+      --surface: #16213E;
+      --surface2: #1c2a4a;
+      --yellow:  #FFD93D;
+      --coral:   #FF6B6B;
+      --white:   #FFFFFF;
+      --muted:   rgba(255,255,255,0.5);
+      --pill:    9999px;
+      --r-xl:    28px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg);
+      color: var(--white);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 36px;
+    }
+
+    /* NAV */
+    #nav {
+      position: sticky; top: 0; left: 0; right: 0; z-index: 500;
+      background: rgba(26,26,46,0.92);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border-bottom: 1px solid rgba(255,217,61,0.07);
+    }
+    .nav-inner {
+      display: flex; align-items: center;
+      justify-content: space-between; height: 68px;
+    }
+    .wordmark img { height: 28px; width: auto; display: block; }
+    .nav-cta {
+      display: inline-flex; align-items: center;
+      height: 40px; padding: 0 20px;
+      background: var(--yellow); color: var(--bg);
+      font-family: inherit; font-size: 14px; font-weight: 700;
+      border-radius: var(--pill);
+      transition: opacity .15s, transform .15s;
+    }
+    .nav-cta:hover { opacity: .88; transform: translateY(-1px); }
+
+    /* PAGE HEADER */
+    .page-header {
+      padding: 72px 36px 56px;
+      border-bottom: 1px solid rgba(255,255,255,.05);
+    }
+    .page-header-inner { max-width: 720px; margin: 0 auto; }
+    .back-crumb {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 13px; font-weight: 600; color: var(--muted);
+      margin-bottom: 24px; transition: color .15s;
+    }
+    .back-crumb:hover { color: var(--yellow); }
+    .page-title {
+      font-size: clamp(36px, 5vw, 56px);
+      font-weight: 800; letter-spacing: -2px;
+      line-height: 1.05; color: var(--yellow);
+      margin-bottom: 10px;
+    }
+    .page-updated { font-size: 14px; color: var(--muted); }
+
+    /* CONTENT */
+    .page-content {
+      padding: 64px 36px 96px;
+    }
+    .content-inner {
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    .content-inner h2 {
+      font-size: 13px; font-weight: 700;
+      letter-spacing: 2px; text-transform: uppercase;
+      color: var(--yellow); margin: 48px 0 14px;
+    }
+    .content-inner h2:first-child { margin-top: 0; }
+
+    .content-inner p {
+      font-size: 15px; line-height: 1.8;
+      color: rgba(255,255,255,.72); margin: 0 0 12px;
+    }
+    .content-inner strong { color: var(--white); font-weight: 700; }
+    .content-inner ul {
+      padding-left: 22px; margin: 0 0 14px;
+    }
+    .content-inner li {
+      font-size: 15px; line-height: 1.8;
+      color: rgba(255,255,255,.72); margin: 0 0 5px;
+    }
+    .content-inner a { color: var(--yellow); }
+    .content-inner a:hover { text-decoration: underline; }
+
+    .legal-contact {
+      margin-top: 56px; padding-top: 28px;
+      border-top: 1px solid rgba(255,255,255,.07);
+      font-size: 14px; color: var(--muted);
+      line-height: 1.8;
+    }
+    .legal-contact strong { color: var(--white); }
+
+    /* FOOTER */
+    footer {
+      background: var(--surface);
+      padding: 56px 36px 36px;
+      border-top: 1px solid rgba(255,255,255,.05);
+    }
+    .footer-top {
+      display: flex; align-items: center;
+      justify-content: space-between; flex-wrap: wrap;
+      gap: 20px; margin-bottom: 32px;
+      padding-bottom: 32px;
+      border-bottom: 1px solid rgba(255,255,255,.06);
+    }
+    .footer-wordmark img { height: 24px; width: auto; display: block; }
+    .footer-links    { display: flex; gap: 24px; flex-wrap: wrap; }
+    .footer-links a  { font-size: 14px; color: var(--muted); transition: color .15s; }
+    .footer-links a:hover { color: var(--white); }
+    .footer-made     { font-size: 14px; color: var(--muted); }
+    .footer-bottom   { text-align: center; }
+    .footer-copy     { font-size: 12px; color: rgba(255,255,255,.28); }
+
+    @media (max-width: 720px) {
+      .container      { padding: 0 20px; }
+      .page-header,
+      .page-content   { padding-left: 20px; padding-right: 20px; }
+      .footer-top     { flex-direction: column; align-items: center; text-align: center; }
+      .footer-links   { justify-content: center; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAV -->
+  <nav id="nav">
+    <div class="container nav-inner">
+      <a href="/" class="wordmark">
+        <img src="images/G-Logo-Primary-Yellow.png" alt="Gone">
+      </a>
+      <a href="#" class="nav-cta">Download</a>
+    </div>
+  </nav>
+
+  <!-- PAGE HEADER -->
+  <header class="page-header">
+    <div class="page-header-inner">
+      <a href="/" class="back-crumb">
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+          <path d="M10 3L5 8l5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        Back to Gone
+      </a>
+      <h1 class="page-title">Terms of Use</h1>
+      <p class="page-updated">Last updated: April 2026</p>
+    </div>
+  </header>
+
+  <!-- CONTENT -->
+  <main class="page-content">
+    <div class="content-inner">
+
+      <h2>Acceptance of terms</h2>
+      <p>By downloading or using Gone ("the app") you agree to these Terms of Use. If you do not agree, do not use the app.</p>
+
+      <h2>Who can use Gone</h2>
+      <p>You must be at least 13 years old to use Gone. If you are under 18 you must have permission from a parent or guardian.</p>
+
+      <h2>What Gone is</h2>
+      <p>Gone is a free, hyperlocal platform that allows users to post items they want to give away and for other users to collect those items. All items listed on Gone must be offered for free. Gone is not a marketplace for buying or selling.</p>
+
+      <h2>Your account</h2>
+      <p>You are responsible for:</p>
+      <ul>
+        <li>Keeping your login credentials secure</li>
+        <li>All activity that occurs under your account</li>
+        <li>Ensuring the information you provide is accurate and up to date</li>
+      </ul>
+      <p>We reserve the right to suspend or terminate accounts that violate these terms.</p>
+
+      <h2>Posting items</h2>
+      <p>When you post an item on Gone you agree that:</p>
+      <ul>
+        <li>The item is yours to give away</li>
+        <li>The item is legal to give away in Australia</li>
+        <li>The item is accurately described</li>
+        <li>You will make the item available to the person who reaches #1 in the queue</li>
+        <li>You will mark the item as Gone once it has been collected</li>
+      </ul>
+      <p>We reserve the right to remove any listing that violates these terms or that we consider inappropriate at our sole discretion.</p>
+
+      <h2>Prohibited items</h2>
+      <p>You must not post any of the following:</p>
+      <ul>
+        <li>Weapons, firearms, or ammunition</li>
+        <li>Illegal substances or drug paraphernalia</li>
+        <li>Stolen goods</li>
+        <li>Items that are unsafe, broken beyond use, or hazardous without disclosure</li>
+        <li>Adult or explicit content</li>
+        <li>Animals or live creatures</li>
+        <li>Any item that is illegal to give away under Australian law</li>
+      </ul>
+      <p>Posting prohibited items will result in immediate removal of the listing and may result in account termination.</p>
+
+      <h2>Collecting items</h2>
+      <p>When you join a queue and reach #1 you agree to:</p>
+      <ul>
+        <li>Make a genuine attempt to collect the item</li>
+        <li>Collect within the time window provided (2 hours from reaching #1, extendable by the lister)</li>
+        <li>Not claim items you have no intention of collecting</li>
+      </ul>
+      <p>Repeated no-shows may result in account suspension.</p>
+
+      <h2>Messaging</h2>
+      <p>The in-app messaging feature is provided solely to facilitate the handover of listed items. You agree not to use messaging to:</p>
+      <ul>
+        <li>Harass, threaten, or abuse other users</li>
+        <li>Send spam or unsolicited promotional content</li>
+        <li>Share personal contact details before both parties are comfortable doing so</li>
+        <li>Conduct any activity unrelated to collecting a listed item</li>
+      </ul>
+      <p>Messages are automatically deleted once a transaction is complete or cancelled.</p>
+
+      <h2>Location</h2>
+      <p>Gone uses your location to show you nearby items and to place your listings on the map. Your exact address is never shown publicly — only an approximate location is visible to other users. Your exact address is only revealed to the person who reaches #1 in the queue for your item.</p>
+
+      <h2>Gone Pro subscription</h2>
+      <p>Gone Pro is a monthly subscription. It includes:</p>
+      <ul>
+        <li>Instant push notifications for new items</li>
+        <li>Early access to new listings (5 min before free users)</li>
+        <li>Unlimited item listings</li>
+        <li>Custom alert zones up to 10km</li>
+      </ul>
+      <p>Subscriptions are managed through Apple's In-App Purchase system. Billing, cancellation, and refunds are handled by Apple in accordance with their terms. To cancel, go to iOS Settings → Apple ID → Subscriptions.</p>
+
+      <h2>User conduct</h2>
+      <p>You agree not to:</p>
+      <ul>
+        <li>Use the app for any unlawful purpose</li>
+        <li>Impersonate another person or entity</li>
+        <li>Attempt to gain unauthorised access to any part of the app or its infrastructure</li>
+        <li>Interfere with or disrupt the app or its servers</li>
+        <li>Use automated tools, bots, or scrapers to access the app</li>
+        <li>Reverse engineer or attempt to extract the source code of the app</li>
+      </ul>
+
+      <h2>Disclaimer</h2>
+      <p>Gone is provided "as is" without warranties of any kind. We do not guarantee the accuracy of any listing, the condition of any item, that any item will be available when you arrive, or uninterrupted operation of the app. All transactions are between users directly. Gone accepts no liability for any loss, damage, or dispute arising from use of the app.</p>
+
+      <h2>Safety</h2>
+      <p>You are responsible for your own safety when meeting other users to exchange items. We recommend meeting in public places where possible and trusting your instincts. Gone accepts no liability for incidents that occur during item exchanges.</p>
+
+      <h2>Intellectual property</h2>
+      <p>All content, design, and code within the Gone app is owned by Connor Rorison unless otherwise stated. You may not copy, reproduce, or distribute any part of the app without written permission.</p>
+      <p>Content you post (photos, descriptions) remains yours. By posting it you grant Gone a non-exclusive licence to display that content within the app for the purpose of facilitating item collection.</p>
+
+      <h2>Termination</h2>
+      <p>We may suspend or terminate your access to Gone at any time for any reason including but not limited to violation of these terms. You may delete your account at any time via Profile → Delete Account.</p>
+
+      <h2>Changes to these terms</h2>
+      <p>We may update these terms from time to time. Continued use of the app after changes constitutes acceptance of the updated terms. We will notify you of significant changes via email or in-app notification.</p>
+
+      <h2>Governing law</h2>
+      <p>These terms are governed by the laws of New South Wales, Australia. Any disputes will be subject to the exclusive jurisdiction of the courts of New South Wales.</p>
+
+      <div class="legal-contact">
+        <strong>Contact</strong><br>
+        Email: <a href="mailto:hello@getgone.au">hello@getgone.au</a><br>
+        Address: Yass Valley, NSW, Australia
+      </div>
+
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-top">
+        <a href="/" class="footer-wordmark">
+          <img src="images/G-Logo-Primary-Yellow.png" alt="Gone">
+        </a>
+        <div class="footer-links">
+          <a href="privacy.html">Privacy Policy</a>
+          <a href="terms.html">Terms of Use</a>
+          <a href="mailto:hello@getgone.au">Contact</a>
+        </div>
+        <span class="footer-made">Made in Canberra, Australia 🇦🇺</span>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copy">© 2026 Gone. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
