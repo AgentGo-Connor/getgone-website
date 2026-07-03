@@ -27,6 +27,7 @@
       --surface2: #1c2a4a;
       --yellow:  #FFD93D;
       --coral:   #FF6B6B;
+      --green:   #43D17C;
       --white:   #FFFFFF;
       --muted:   rgba(255,255,255,0.5);
       --pill:    9999px;
@@ -242,6 +243,7 @@
     .tag-free    { background: rgba(255,217,61,.14); color: var(--yellow); }
     .tag-hot     { background: rgba(255,107,107,.18); color: var(--coral); }
     .tag-new     { background: rgba(100,200,150,.18); color: #6fdfaa; }
+    .tag-time    { background: rgba(255,255,255,.08); color: rgba(255,255,255,.72); }
 
     .lc1 { top: 17%; left: 5%; animation-delay: 0s; }
     .lc2 { top: 23%; right: 4.5%; animation-delay: -2.8s; }
@@ -339,36 +341,6 @@
     }
 
     /* =========================================
-       STATS STRIP
-    ========================================= */
-    .stats-strip {
-      background: var(--surface);
-      border-top: 1px solid rgba(255,255,255,.05);
-      border-bottom: 1px solid rgba(255,255,255,.05);
-    }
-    .stats-grid {
-      display: grid; grid-template-columns: repeat(4,1fr);
-    }
-    .stat-cell {
-      padding: 40px 24px; text-align: center;
-      position: relative;
-    }
-    .stat-cell + .stat-cell::before {
-      content: '';
-      position: absolute; left: 0; top: 25%; bottom: 25%;
-      width: 1px; background: rgba(255,255,255,.07);
-    }
-    .stat-num {
-      display: block;
-      font-size: 44px; font-weight: 800;
-      letter-spacing: -2px; line-height: 1;
-      color: var(--yellow); margin-bottom: 7px;
-    }
-    .stat-lbl {
-      font-size: 13px; font-weight: 500; color: var(--muted);
-    }
-
-    /* =========================================
        TICKER
     ========================================= */
     .ticker-wrap {
@@ -397,20 +369,13 @@
     /* =========================================
        SECTION SHARED
     ========================================= */
-    .section { padding: 108px 36px; }
+    .section { padding: 108px 36px; position: relative; }
 
     .eyebrow {
-      display: flex; align-items: center;
-      justify-content: center; gap: 12px; margin-bottom: 18px;
-    }
-    .eyebrow-line {
-      flex: 0 0 36px; height: 1px;
-      background: rgba(255,217,61,.35);
-    }
-    .eyebrow-text {
+      display: block; text-align: center;
       font-size: 11px; font-weight: 700;
       letter-spacing: 2.5px; text-transform: uppercase;
-      color: var(--yellow);
+      color: var(--yellow); margin-bottom: 18px;
     }
 
     .section-heading {
@@ -425,96 +390,281 @@
       margin: 0 auto 72px; line-height: 1.75;
     }
 
+    /* Left-aligned section header variant */
+    .section-head-left { max-width: 1040px; margin: 0 auto 88px; }
+    .section-head-left .eyebrow,
+    .section-head-left .section-heading,
+    .section-head-left .section-sub { text-align: left; }
+    .section-head-left .section-sub { margin: 0; }
+
+    /* Scattered sticker emojis */
+    .sticker {
+      position: absolute; font-size: 42px; opacity: .3;
+      pointer-events: none; user-select: none; z-index: 0;
+    }
+
     /* =========================================
-       HOW IT WORKS
+       HOW IT WORKS — STORYBOARD
     ========================================= */
     .how-section { background: var(--surface); }
 
-    .steps {
-      display: grid; grid-template-columns: repeat(3,1fr);
-      gap: 20px; max-width: 1040px; margin: 0 auto;
+    .story-rows {
+      display: flex; flex-direction: column;
+      gap: 100px; max-width: 1040px; margin: 0 auto;
+    }
+    .story-row {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 64px; align-items: center;
+    }
+    .story-row.flip .story-visual { order: -1; }
+
+    .story-num {
+      font-size: 12px; font-weight: 800;
+      letter-spacing: 2.5px; text-transform: uppercase;
+      color: var(--yellow); margin-bottom: 14px;
+    }
+    .story-title {
+      font-size: clamp(26px, 3vw, 36px);
+      font-weight: 800; letter-spacing: -1px;
+      line-height: 1.15; margin-bottom: 14px;
+    }
+    .story-body {
+      font-size: 16px; color: var(--muted);
+      line-height: 1.75; max-width: 400px;
     }
 
-    .step {
-      background: rgba(26,26,46,.55);
-      border: 1px solid rgba(255,255,255,.06);
-      border-radius: var(--r-xl); padding: 44px 36px;
-      position: relative; overflow: hidden;
-      transition: border-color .25s, transform .3s;
+    /* --- Phone-screen mocks (recreated app UI) --- */
+    .phone {
+      width: min(330px, 100%); margin: 0 auto;
+      background: #111a30;
+      border: 1px solid rgba(255,255,255,.09);
+      border-radius: 34px; padding: 20px 16px;
+      box-shadow: 0 30px 80px rgba(0,0,0,.45),
+                  0 0 0 1px rgba(255,217,61,.05);
     }
-    .step:hover { border-color: rgba(255,217,61,.22); transform: translateY(-5px); }
+    .phone-r { transform: rotate(2.5deg); }
+    .phone-l { transform: rotate(-2.5deg); }
 
-    /* Ghost number */
-    .step::before {
-      content: attr(data-n);
-      position: absolute; bottom: -16px; right: 12px;
-      font-size: 120px; font-weight: 800;
-      color: rgba(255,217,61,.045); line-height: 1;
-      pointer-events: none; user-select: none;
+    .ph-title {
+      font-size: 12px; font-weight: 700; text-align: center;
+      color: rgba(255,255,255,.8); letter-spacing: .3px;
+      margin-bottom: 14px;
     }
-    /* Gradient top bar on hover */
-    .step::after {
-      content: ''; position: absolute;
-      top: 0; left: 0; right: 0; height: 2px;
-      background: linear-gradient(90deg, var(--yellow), var(--coral));
-      opacity: 0; border-radius: 28px 28px 0 0;
-      transition: opacity .25s;
+    .ph-photo {
+      height: 118px; border-radius: 16px; margin-bottom: 10px;
+      background: rgba(255,255,255,.04);
+      border: 1px dashed rgba(255,255,255,.16);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 42px;
     }
-    .step:hover::after { opacity: 1; }
-
-    .step-icon-wrap {
-      width: 64px; height: 64px; border-radius: 18px;
-      background: rgba(255,217,61,.1);
-      border: 1px solid rgba(255,217,61,.18);
+    .ph-line {
       display: flex; align-items: center;
-      justify-content: center; font-size: 28px;
-      margin-bottom: 24px;
+      justify-content: space-between; gap: 10px;
+      background: rgba(255,255,255,.05);
+      border-radius: 13px; padding: 11px 13px;
+      margin-bottom: 10px;
     }
-    .step-num {
-      font-size: 11px; font-weight: 700;
-      letter-spacing: 2px; text-transform: uppercase;
-      color: var(--yellow); opacity: .65; margin-bottom: 8px;
+    .ph-line-main { font-size: 13px; font-weight: 700; }
+    .ph-note {
+      font-size: 11px; color: var(--muted); line-height: 1.5;
+      background: rgba(255,217,61,.07);
+      border: 1px solid rgba(255,217,61,.14);
+      border-radius: 13px; padding: 9px 13px;
+      margin-bottom: 10px;
     }
-    .step-title { font-size: 21px; font-weight: 700; margin-bottom: 12px; letter-spacing: -.3px; }
-    .step-body  { font-size: 15px; color: var(--muted); line-height: 1.7; }
+    .ph-chip-yellow {
+      font-size: 10px; font-weight: 800; padding: 4px 10px;
+      background: var(--yellow); color: var(--bg);
+      border-radius: var(--pill); white-space: nowrap;
+    }
+    .ph-chip-hot {
+      font-size: 10px; font-weight: 800; padding: 4px 10px;
+      letter-spacing: .5px;
+      background: rgba(255,107,107,.18); color: var(--coral);
+      border-radius: var(--pill);
+    }
+    .ph-toggle {
+      width: 36px; height: 21px; flex-shrink: 0;
+      background: var(--yellow); border-radius: var(--pill);
+      position: relative;
+    }
+    .ph-toggle::after {
+      content: ''; position: absolute; top: 2.5px; right: 2.5px;
+      width: 16px; height: 16px; border-radius: 50%;
+      background: var(--bg);
+    }
+    .ph-btn {
+      border-radius: var(--pill); text-align: center;
+      font-size: 14px; font-weight: 800; padding: 13px;
+      margin-top: 4px;
+    }
+    .ph-btn + .ph-btn { margin-top: 10px; }
+    .ph-btn-yellow { background: var(--yellow); color: var(--bg); }
+    .ph-btn-green  { background: var(--green); color: #0B2B18; }
+    .ph-btn-ghost  {
+      background: rgba(255,255,255,.06); color: var(--white);
+      font-weight: 600; font-size: 13px;
+    }
+    .ph-banner {
+      background: var(--green); color: #0B2B18;
+      font-size: 13px; font-weight: 800; text-align: center;
+      border-radius: 13px; padding: 11px; margin-bottom: 10px;
+    }
+    .ph-map {
+      position: relative; height: 230px; border-radius: 20px;
+      margin-bottom: 12px; overflow: hidden;
+      background-color: #16233d;
+      background-image: radial-gradient(circle, rgba(255,217,61,.16) 1.3px, transparent 0);
+      background-size: 26px 26px;
+    }
+    .ph-pin {
+      position: absolute; width: 36px; height: 36px;
+      background: var(--surface);
+      border: 1px solid rgba(255,255,255,.14);
+      border-radius: 50% 50% 50% 6px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 16px; box-shadow: 0 6px 18px rgba(0,0,0,.4);
+    }
+    .ph-pop {
+      position: absolute; top: 52%; right: 8%;
+      background: rgba(20,30,55,.95);
+      border: 1px solid rgba(255,217,61,.2);
+      border-radius: 12px; padding: 8px 11px;
+      font-size: 11px; font-weight: 700; line-height: 1.35;
+      box-shadow: 0 10px 30px rgba(0,0,0,.5);
+    }
+    .ph-pop small {
+      display: block; color: var(--muted);
+      font-weight: 500; font-size: 10px;
+    }
+    .ph-fab {
+      position: absolute; bottom: 12px; right: 12px;
+      width: 44px; height: 44px; border-radius: 50%;
+      background: var(--yellow); color: var(--bg);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 24px; font-weight: 700;
+      box-shadow: 0 8px 24px rgba(0,0,0,.4);
+    }
+    .ph-tabs {
+      display: flex; gap: 5px;
+      background: rgba(255,255,255,.05);
+      border-radius: var(--pill); padding: 5px;
+    }
+    .ph-tab {
+      flex: 1; text-align: center;
+      font-size: 10.5px; font-weight: 700; padding: 8px 0;
+      border-radius: var(--pill); color: var(--muted);
+    }
+    .ph-tab.active { background: var(--yellow); color: var(--bg); }
 
     /* =========================================
-       FEATURES
+       FEATURES — BENTO
     ========================================= */
     .feat-section { background: var(--bg); }
 
-    .feat-grid {
-      display: grid; grid-template-columns: repeat(3,1fr);
-      gap: 20px; max-width: 1100px; margin: 0 auto;
+    .bento {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 18px; max-width: 1100px; margin: 0 auto;
     }
-
-    .feat-card {
+    .bento-card {
       background: var(--surface);
-      border: 1px solid rgba(255,255,255,.05);
-      border-radius: var(--r-xl); padding: 32px;
+      border: 1px solid rgba(255,255,255,.06);
+      border-radius: var(--r-xl); padding: 30px;
       position: relative; overflow: hidden;
-      transition: border-color .25s, transform .3s;
+      display: flex; flex-direction: column;
+      transition: border-color .25s;
     }
-    .feat-card:hover { border-color: rgba(255,217,61,.22); transform: translateY(-5px); }
-    .feat-card::after {
-      content: ''; position: absolute;
-      top: 0; left: 0; right: 0; height: 2px;
-      background: linear-gradient(90deg, var(--yellow), var(--coral));
-      border-radius: 28px 28px 0 0;
-      opacity: 0; transition: opacity .25s;
-    }
-    .feat-card:hover::after { opacity: 1; }
+    .bento-card:hover { border-color: rgba(255,217,61,.3); }
+    .b-wide { grid-column: span 2; }
 
-    .feat-icon-box {
-      width: 52px; height: 52px; border-radius: 14px;
-      background: rgba(255,217,61,.09);
-      border: 1px solid rgba(255,217,61,.14);
-      display: flex; align-items: center;
-      justify-content: center; font-size: 24px;
-      margin-bottom: 20px;
+    .bento-title { font-size: 18px; font-weight: 700; letter-spacing: -.2px; margin-bottom: 8px; }
+    .bento-body  { font-size: 14px; color: var(--muted); line-height: 1.7; }
+    .bento-demo  { margin-top: auto; padding-top: 24px; }
+    .bento-ghost {
+      position: absolute; right: -14px; bottom: -22px;
+      font-size: 110px; opacity: .07; transform: rotate(-12deg);
+      pointer-events: none; user-select: none;
     }
-    .feat-title { font-size: 17px; font-weight: 700; margin-bottom: 10px; letter-spacing: -.2px; }
-    .feat-body  { font-size: 14px; color: var(--muted); line-height: 1.7; }
+
+    /* Queue demo */
+    .q-row {
+      display: flex; align-items: center; gap: 12px;
+      background: rgba(255,255,255,.04);
+      border-radius: 13px; padding: 10px 14px;
+      margin-bottom: 8px; font-size: 13px;
+    }
+    .q-row:last-child { margin-bottom: 0; }
+    .q-pos {
+      width: 24px; height: 24px; flex-shrink: 0; border-radius: 50%;
+      background: rgba(255,255,255,.08); color: var(--muted);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 11px; font-weight: 800;
+    }
+    .q-name { font-weight: 700; }
+    .q-note, .q-chip { margin-left: auto; font-size: 11px; color: var(--muted); }
+    .q-first {
+      background: rgba(67,209,124,.1);
+      border: 1px solid rgba(67,209,124,.25);
+    }
+    .q-first .q-pos  { background: var(--green); color: #0B2B18; }
+    .q-first .q-note { color: var(--green); font-weight: 700; }
+
+    /* Address privacy demo */
+    .addr-card {
+      display: flex; align-items: center;
+      justify-content: space-between; gap: 10px;
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 13px; padding: 12px 14px;
+      font-size: 13px; font-weight: 700;
+    }
+    .addr-blur { color: transparent; text-shadow: 0 0 9px rgba(255,255,255,.55); }
+
+    /* Collection hours demo */
+    .hrs-row {
+      display: flex; align-items: center; justify-content: space-between;
+      background: rgba(255,255,255,.04);
+      border-radius: 13px; padding: 10px 14px;
+      margin-bottom: 8px;
+      font-size: 13px; font-weight: 600; color: var(--muted);
+    }
+    .hrs-row:last-child { margin-bottom: 0; }
+    .hrs-pill {
+      background: rgba(255,255,255,.08); color: var(--white);
+      font-weight: 700; font-size: 12px;
+      border-radius: var(--pill); padding: 4px 12px;
+    }
+
+    /* Garage sale demo */
+    .gs-card {
+      display: flex; align-items: center; gap: 14px;
+      background: rgba(255,255,255,.04);
+      border-radius: 13px; padding: 12px 14px;
+    }
+    .gs-emoji { font-size: 24px; }
+    .gs-info  { display: flex; flex-direction: column; }
+    .gs-name  { font-size: 13px; font-weight: 700; }
+    .gs-meta  { font-size: 11px; color: var(--muted); }
+    .gs-open  {
+      margin-left: auto; white-space: nowrap;
+      font-size: 11px; font-weight: 800;
+      background: rgba(255,217,61,.14); color: var(--yellow);
+      padding: 5px 12px; border-radius: var(--pill);
+    }
+
+    /* Messaging demo */
+    .msg-bub {
+      font-size: 12px; font-weight: 600;
+      background: rgba(255,255,255,.07);
+      border-radius: 14px 14px 14px 4px;
+      padding: 8px 13px; margin-bottom: 8px;
+      width: fit-content; max-width: 90%;
+    }
+    .msg-me {
+      margin-left: auto; margin-bottom: 0;
+      background: rgba(255,217,61,.16); color: var(--yellow);
+      border-radius: 14px 14px 4px 14px;
+    }
 
     /* =========================================
        MANIFESTO STRIP
@@ -523,19 +673,51 @@
       background: var(--surface2);
       border-top: 1px solid rgba(255,255,255,.04);
       border-bottom: 1px solid rgba(255,255,255,.04);
-      padding: 80px 36px;
+      padding: 110px 36px;
       text-align: center;
+      position: relative; overflow: hidden;
     }
     .manifesto-quote {
-      font-size: clamp(22px, 3.5vw, 36px);
-      font-weight: 700; line-height: 1.35;
-      letter-spacing: -.5px; max-width: 820px;
-      margin: 0 auto 18px; color: var(--white);
+      font-size: clamp(30px, 4.5vw, 54px);
+      font-weight: 800; line-height: 1.25;
+      letter-spacing: -1px; max-width: 820px;
+      margin: 0 auto 20px; color: var(--white);
+      position: relative; z-index: 1;
     }
-    .manifesto-quote em { color: var(--yellow); font-style: normal; }
+    .manifesto-quote em {
+      color: var(--yellow); font-style: normal;
+      position: relative; white-space: nowrap;
+    }
+    /* Hand-drawn marker underline */
+    .manifesto-quote em::after {
+      content: ''; position: absolute;
+      left: -2%; right: -2%; bottom: -12px; height: 12px;
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 12' preserveAspectRatio='none'%3E%3Cpath d='M3 9C30 3 60 8 90 5c12-1 20 0 27 2' fill='none' stroke='%23FF6B6B' stroke-width='5' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat center / 100% 100%;
+    }
     .manifesto-sub {
       font-size: 16px; color: var(--muted); max-width: 440px; margin: 0 auto;
+      position: relative; z-index: 1;
     }
+
+    /* Polaroid cards scattered behind the quote */
+    .pol {
+      position: absolute; width: 118px; z-index: 0;
+      background: #FBF8EF; border-radius: 8px;
+      padding: 7px 7px 9px;
+      box-shadow: 0 16px 44px rgba(0,0,0,.4);
+    }
+    .pol-img {
+      display: flex; align-items: center; justify-content: center;
+      height: 82px; border-radius: 5px;
+      background: #E8E2D2; font-size: 38px;
+    }
+    .pol-cap {
+      display: block; margin-top: 7px; text-align: center;
+      font-size: 10px; font-weight: 700; color: #6B6656;
+    }
+    .pol-1 { left: 5%;  top: 20%;     transform: rotate(-8deg); }
+    .pol-2 { right: 5%; top: 16%;     transform: rotate(6deg); }
+    .pol-3 { right: 15%; bottom: -30px; transform: rotate(-5deg); }
 
     /* =========================================
        GONE PRO
@@ -543,6 +725,8 @@
     .pro-section {
       position: relative; overflow: hidden;
       background: radial-gradient(ellipse 110% 80% at 50% 0%, #FFE868 0%, #FFD93D 65%);
+      clip-path: polygon(0 56px, 100% 0, 100% 100%, 0 100%);
+      padding: 164px 36px 116px;
     }
     /* Subtle dot texture */
     .pro-section::before {
@@ -552,52 +736,58 @@
     }
     .pro-inner { position: relative; z-index: 1; }
 
-    .pro-crown {
-      text-align: center; font-size: 44px;
-      margin-bottom: 14px; line-height: 1;
+    .pro-layout {
+      display: grid; grid-template-columns: 1.1fr 1fr;
+      gap: 72px; align-items: center;
+      max-width: 1000px; margin: 0 auto;
     }
     .pro-title {
-      font-size: clamp(52px, 7vw, 92px);
+      font-size: clamp(44px, 6vw, 76px);
       font-weight: 800; color: var(--bg);
-      text-align: center; letter-spacing: -3px;
-      line-height: 1; margin-bottom: 10px;
+      letter-spacing: -2.5px;
+      line-height: 1; margin-bottom: 16px;
     }
     .pro-sub {
-      font-size: 18px; color: rgba(26,26,46,.58);
-      text-align: center; margin-bottom: 56px; font-weight: 500;
+      font-size: 18px; color: rgba(26,26,46,.62);
+      font-weight: 500; line-height: 1.65;
+      margin-bottom: 34px; max-width: 420px;
     }
 
-    .pro-grid {
-      display: grid; grid-template-columns: repeat(3,1fr);
-      gap: 14px; max-width: 860px;
-      margin: 0 auto 48px;
+    /* Membership pass card */
+    .pro-pass {
+      background: var(--bg); border-radius: 24px;
+      padding: 26px 26px 22px;
+      max-width: 360px; width: 100%; margin: 0 auto;
+      transform: rotate(3deg);
+      box-shadow: 0 34px 80px rgba(26,26,46,.38);
     }
-    .pro-card {
-      background: var(--bg); border-radius: 16px;
-      padding: 20px 22px; display: flex;
-      align-items: center; gap: 14px;
-      transition: transform .2s;
-    }
-    .pro-card:hover { transform: translateY(-3px); }
-    .pro-icon-box {
-      width: 42px; height: 42px; border-radius: 12px; flex-shrink: 0;
-      background: rgba(255,217,61,.1);
+    .pass-head {
       display: flex; align-items: center;
-      justify-content: center; font-size: 20px;
+      justify-content: space-between; margin-bottom: 14px;
     }
-    .pro-lbl { font-size: 14px; font-weight: 600; color: var(--yellow); }
+    .pass-word { font-size: 18px; font-weight: 800; color: var(--yellow); letter-spacing: -.3px; }
+    .pass-badge {
+      font-size: 9px; font-weight: 800; letter-spacing: 2px;
+      color: rgba(255,255,255,.45);
+      border: 1px solid rgba(255,255,255,.18);
+      border-radius: var(--pill); padding: 4px 10px;
+    }
+    .pass-perk {
+      display: flex; align-items: center; gap: 12px;
+      padding: 10px 2px;
+      border-bottom: 1px dashed rgba(255,255,255,.1);
+      font-size: 13.5px; font-weight: 600; color: var(--white);
+    }
+    .pass-perk:last-of-type { border-bottom: 0; }
+    .pass-perk-ic { font-size: 16px; width: 22px; text-align: center; }
+    .pass-foot {
+      margin-top: 12px; padding-top: 14px;
+      border-top: 1px solid rgba(255,255,255,.1);
+      display: flex; align-items: center; justify-content: space-between;
+      font-size: 11px; font-weight: 600; color: var(--muted);
+    }
+    .pass-price { font-size: 13px; font-weight: 800; color: var(--yellow); }
 
-    .pro-bottom {
-      display: flex; flex-direction: column;
-      align-items: center; gap: 20px; text-align: center;
-    }
-    .pro-price {
-      display: inline-flex; align-items: center;
-      background: rgba(26,26,46,.14);
-      border: 1px solid rgba(26,26,46,.12);
-      color: var(--bg); font-size: 15px; font-weight: 700;
-      padding: 12px 28px; border-radius: var(--pill);
-    }
     .pro-dl-btn {
       display: inline-flex; align-items: center; gap: 11px;
       height: 60px; padding: 0 38px;
@@ -702,35 +892,39 @@
     ========================================= */
     @media (max-width: 980px) {
       .lcard          { display: none; }
-      .feat-grid      { grid-template-columns: repeat(2,1fr); }
-      .pro-grid       { grid-template-columns: repeat(2,1fr); }
-      .stats-grid     { grid-template-columns: repeat(2,1fr); }
-      .stat-cell:nth-child(2)::before { display: none; }
-      .stat-cell:nth-child(3),
-      .stat-cell:nth-child(4) {
-        border-top: 1px solid rgba(255,255,255,.07);
-      }
+      .story-rows     { gap: 72px; }
+      .story-row      { grid-template-columns: 1fr; gap: 36px; }
+      .story-row.flip .story-visual { order: 0; }
+      .bento          { grid-template-columns: repeat(2, 1fr); }
+      .pro-layout     { grid-template-columns: 1fr; gap: 56px; }
+      .pro-pitch      { text-align: center; }
+      .pro-sub        { margin-left: auto; margin-right: auto; }
+      .pol            { display: none; }
+      .sticker        { display: none; }
     }
     @media (max-width: 720px) {
       .container    { padding: 0 20px; }
       .section      { padding: 80px 20px; }
       .hero         { padding: 100px 20px 80px; }
-      .steps        { grid-template-columns: 1fr; }
-      .feat-grid    { grid-template-columns: 1fr; }
-      .pro-grid     { grid-template-columns: 1fr; }
+      .bento        { grid-template-columns: 1fr; }
+      .b-wide       { grid-column: auto; }
       .hero-hl      { letter-spacing: -2px; }
       .nav-link     { display: none; }
       .footer-top   { flex-direction: column; align-items: center; text-align: center; }
       .footer-links { justify-content: center; }
-      .manifesto    { padding: 60px 20px; }
+      .manifesto    { padding: 80px 20px; }
+      .pro-section  {
+        clip-path: polygon(0 32px, 100% 0, 100% 100%, 0 100%);
+        padding: 116px 20px 88px;
+      }
+      .section-head-left { margin-bottom: 64px; }
     }
     @media (max-width: 480px) {
       .hero-btns    { flex-direction: column; align-items: stretch; }
       .btn-appstore,
       .btn-ghost    { justify-content: center; width: 100%; }
-      .stats-grid   { grid-template-columns: 1fr; }
-      .stat-cell::before { display: none !important; }
-      .stat-cell + .stat-cell { border-top: 1px solid rgba(255,255,255,.07); }
+      .phone-r, .phone-l { transform: rotate(0); }
+      .pro-pass     { transform: rotate(0); }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -815,7 +1009,7 @@
       </div>
       <div class="lcard-meta">
         <span class="lcard-dist">0.6 km · Fremantle</span>
-        <span class="lcard-tag tag-free">Free</span>
+        <span class="lcard-tag tag-time">⏳ 49 min</span>
       </div>
     </div>
 
@@ -852,30 +1046,6 @@
       </svg>
     </div>
   </section>
-
-  <!-- ==================== STATS ==================== -->
-  <div class="stats-strip reveal">
-    <div class="container">
-      <div class="stats-grid">
-        <div class="stat-cell">
-          <span class="stat-num">$0</span>
-          <span class="stat-lbl">Free to use, forever</span>
-        </div>
-        <div class="stat-cell">
-          <span class="stat-num">30s</span>
-          <span class="stat-lbl">Average post time</span>
-        </div>
-        <div class="stat-cell">
-          <span class="stat-num">100%</span>
-          <span class="stat-lbl">Of listings are free</span>
-        </div>
-        <div class="stat-cell">
-          <span class="stat-num">0</span>
-          <span class="stat-lbl">Landfill from Gone</span>
-        </div>
-      </div>
-    </div>
-  </div>
 
   <!-- ==================== TICKER ==================== -->
   <div class="ticker-wrap" aria-hidden="true">
@@ -918,33 +1088,87 @@
 
   <!-- ==================== HOW IT WORKS ==================== -->
   <section class="section how-section" id="how-it-works">
+    <span class="sticker" style="top: 72px; right: 7%; transform: rotate(14deg);" aria-hidden="true">📦</span>
     <div class="container">
-      <div class="eyebrow reveal">
-        <span class="eyebrow-line"></span>
-        <span class="eyebrow-text">How It Works</span>
-        <span class="eyebrow-line"></span>
+      <div class="section-head-left">
+        <p class="eyebrow reveal">How it works</p>
+        <h2 class="section-heading reveal">Three steps. Zero friction.</h2>
+        <p class="section-sub reveal">Gone strips away every bit of friction between you and free stuff on your street.</p>
       </div>
-      <h2 class="section-heading reveal">Three steps. Zero friction.</h2>
-      <p class="section-sub reveal">Gone strips away every bit of friction between you and free stuff on your street.</p>
 
-      <div class="steps">
-        <div class="step reveal d1" data-n="01">
-          <div class="step-icon-wrap">📦</div>
-          <p class="step-num">Step 01</p>
-          <h3 class="step-title">Post an item</h3>
-          <p class="step-body">Snap a photo, pick a category and drop it on the map. Takes 30 seconds.</p>
+      <div class="story-rows">
+        <!-- Step 1: Post -->
+        <div class="story-row">
+          <div class="story-text reveal">
+            <p class="story-num">Step 01</p>
+            <h3 class="story-title">Snap it. Drop it. Done.</h3>
+            <p class="story-body">Take a photo, pick a category, set when people can collect — then Drop It. Your listing is live on the map in about 30 seconds.</p>
+          </div>
+          <div class="story-visual reveal d2">
+            <div class="phone phone-r" aria-hidden="true">
+              <p class="ph-title">New Listing</p>
+              <div class="ph-photo">🛋️</div>
+              <div class="ph-line">
+                <span class="ph-line-main">Mid-century armchair</span>
+                <span class="ph-chip-yellow">Furniture</span>
+              </div>
+              <div class="ph-note">🔒 Your address is only shown to the person collecting</div>
+              <div class="ph-line">
+                <span class="ph-line-main">Available now</span>
+                <span class="ph-toggle"></span>
+              </div>
+              <div class="ph-btn ph-btn-yellow">Drop It 📦</div>
+            </div>
+          </div>
         </div>
-        <div class="step reveal d2" data-n="02">
-          <div class="step-icon-wrap">🗺️</div>
-          <p class="step-num">Step 02</p>
-          <h3 class="step-title">Browse the map</h3>
-          <p class="step-body">See free items near you right now. Filter by category. Join the queue.</p>
+
+        <!-- Step 2: Browse -->
+        <div class="story-row flip">
+          <div class="story-text reveal">
+            <p class="story-num">Step 02</p>
+            <h3 class="story-title">Everything free, on one map.</h3>
+            <p class="story-body">See what's up for grabs near you right now. Filter by category, tap a pin, and join the queue with one tap.</p>
+          </div>
+          <div class="story-visual reveal d2">
+            <div class="phone phone-l" aria-hidden="true">
+              <div class="ph-map">
+                <span class="ph-pin" style="top: 16%; left: 14%;">🛋️</span>
+                <span class="ph-pin" style="top: 38%; right: 16%;">🌿</span>
+                <span class="ph-pin" style="bottom: 26%; left: 26%;">🪑</span>
+                <div class="ph-pop">📚 Box of novels<small>0.9 km · Fitzroy</small></div>
+                <div class="ph-fab">+</div>
+              </div>
+              <div class="ph-tabs">
+                <span class="ph-tab active">🗺️ Map</span>
+                <span class="ph-tab">🔔 Alerts</span>
+                <span class="ph-tab">📦 Items</span>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="step reveal d3" data-n="03">
-          <div class="step-icon-wrap">✅</div>
-          <p class="step-num">Step 03</p>
-          <h3 class="step-title">Go get it</h3>
-          <p class="step-body">Reach #1 in the queue, get the address, and go collect. Mark it Gone when you're done.</p>
+
+        <!-- Step 3: Collect -->
+        <div class="story-row">
+          <div class="story-text reveal">
+            <p class="story-num">Step 03</p>
+            <h3 class="story-title">Hit #1, get the address, go.</h3>
+            <p class="story-body">Reach the front of the queue and the address unlocks. Get directions, grab the item, and mark it Gone.</p>
+          </div>
+          <div class="story-visual reveal d2">
+            <div class="phone phone-r" aria-hidden="true">
+              <div class="ph-banner">You're #1 — go get it! 🎉</div>
+              <div class="ph-line">
+                <span class="ph-line-main">🪑 4× dining chairs</span>
+                <span class="ph-chip-hot">HOT</span>
+              </div>
+              <div class="ph-line">
+                <span class="ph-line-main">📍 42 George St, Surry Hills</span>
+                <span class="ph-chip-yellow">Maps</span>
+              </div>
+              <div class="ph-btn ph-btn-green">I Got It! ✅</div>
+              <div class="ph-btn ph-btn-ghost">💬 Message Lister</div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -952,45 +1176,83 @@
 
   <!-- ==================== FEATURES ==================== -->
   <section class="section feat-section" id="features">
+    <span class="sticker" style="top: 88px; left: 5%; transform: rotate(-10deg);" aria-hidden="true">🪴</span>
     <div class="container">
-      <div class="eyebrow reveal">
-        <span class="eyebrow-line"></span>
-        <span class="eyebrow-text">What Makes Gone Different</span>
-        <span class="eyebrow-line"></span>
-      </div>
+      <p class="eyebrow reveal">What Makes Gone Different</p>
       <h2 class="section-heading reveal">Built for your neighbourhood.</h2>
-      <p class="section-sub reveal">Not for profit. Not for ads. For the people on your street.</p>
+      <p class="section-sub reveal">No ads. No algorithms. Just free stuff and the people on your street.</p>
 
-      <div class="feat-grid">
-        <div class="feat-card reveal d1">
-          <div class="feat-icon-box">🔒</div>
-          <h3 class="feat-title">Address privacy</h3>
-          <p class="feat-body">Your exact address is never shown publicly. Only revealed to the person at the front of the queue.</p>
+      <div class="bento">
+        <div class="bento-card b-wide reveal d1">
+          <h3 class="bento-title">Fair queue system</h3>
+          <p class="bento-body">First come, first served. Miss your slot and the next person automatically moves up.</p>
+          <div class="bento-demo" aria-hidden="true">
+            <div class="q-row q-first">
+              <span class="q-pos">1</span>
+              <span class="q-name">Sam</span>
+              <span class="q-note">You're up — go collect!</span>
+            </div>
+            <div class="q-row">
+              <span class="q-pos">2</span>
+              <span class="q-name">Priya</span>
+              <span class="q-chip">⏳ next in line</span>
+            </div>
+            <div class="q-row">
+              <span class="q-pos">3</span>
+              <span class="q-name">Jack</span>
+              <span class="q-chip">waiting</span>
+            </div>
+          </div>
         </div>
-        <div class="feat-card reveal d2">
-          <div class="feat-icon-box">📋</div>
-          <h3 class="feat-title">Fair queue system</h3>
-          <p class="feat-body">First come, first served. Miss your slot and the next person automatically moves up.</p>
+
+        <div class="bento-card reveal d2">
+          <h3 class="bento-title">Address privacy</h3>
+          <p class="bento-body">Your exact address is never shown publicly — only revealed to the person at the front of the queue.</p>
+          <div class="bento-demo" aria-hidden="true">
+            <div class="addr-card">
+              <span class="addr-blur">42 George St, Surry Hills</span>
+              <span>🔒</span>
+            </div>
+          </div>
         </div>
-        <div class="feat-card reveal d3">
-          <div class="feat-icon-box">⏰</div>
-          <h3 class="feat-title">Collection hours</h3>
-          <p class="feat-body">Set when people can come. No one shows up at 2am.</p>
+
+        <div class="bento-card reveal d3">
+          <h3 class="bento-title">Collection hours</h3>
+          <p class="bento-body">Set when people can come. No one shows up at 2am.</p>
+          <div class="bento-demo" aria-hidden="true">
+            <div class="hrs-row"><span>From</span><span class="hrs-pill">8:00 am</span></div>
+            <div class="hrs-row"><span>Until</span><span class="hrs-pill">7:00 pm</span></div>
+          </div>
         </div>
-        <div class="feat-card reveal d4">
-          <div class="feat-icon-box">🏷️</div>
-          <h3 class="feat-title">Garage sales</h3>
-          <p class="feat-body">Post your garage sale. Address stays hidden until the event begins — reveal it yourself when you open up.</p>
+
+        <div class="bento-card b-wide reveal d4">
+          <h3 class="bento-title">Garage sales</h3>
+          <p class="bento-body">Post your garage sale. The address stays hidden until the event begins — reveal it yourself when you open up.</p>
+          <div class="bento-demo" aria-hidden="true">
+            <div class="gs-card">
+              <span class="gs-emoji">🏷️</span>
+              <div class="gs-info">
+                <span class="gs-name">Assorted items — Brunswick</span>
+                <span class="gs-meta">🔒 Address hidden until it opens</span>
+              </div>
+              <span class="gs-open">Opens Sat 8:00 am</span>
+            </div>
+          </div>
         </div>
-        <div class="feat-card reveal d5">
-          <div class="feat-icon-box">♻️</div>
-          <h3 class="feat-title">Less landfill</h3>
-          <p class="feat-body">Every item given away is one less thing in a skip bin.</p>
+
+        <div class="bento-card reveal d5">
+          <h3 class="bento-title">Direct messaging</h3>
+          <p class="bento-body">Lister and collector can message each other once you're at the front of the queue.</p>
+          <div class="bento-demo" aria-hidden="true">
+            <div class="msg-bub">On my way! 🚗</div>
+            <div class="msg-bub msg-me">It's by the front gate 📦</div>
+          </div>
         </div>
-        <div class="feat-card reveal d6">
-          <div class="feat-icon-box">💬</div>
-          <h3 class="feat-title">Direct messaging</h3>
-          <p class="feat-body">Lister and collector can message each other once you're at the front of the queue.</p>
+
+        <div class="bento-card b-wide reveal d6">
+          <span class="bento-ghost" aria-hidden="true">♻️</span>
+          <h3 class="bento-title">Less landfill</h3>
+          <p class="bento-body">Every item given away is one less thing in a skip bin. Your street's clutter becomes your street's furniture, not council pickup.</p>
         </div>
       </div>
     </div>
@@ -998,57 +1260,58 @@
 
   <!-- ==================== MANIFESTO STRIP ==================== -->
   <div class="manifesto reveal">
+    <div class="pol pol-1" aria-hidden="true">
+      <span class="pol-img">🛋️</span>
+      <span class="pol-cap">Gone in 4 min</span>
+    </div>
+    <div class="pol pol-2" aria-hidden="true">
+      <span class="pol-img">🌿</span>
+      <span class="pol-cap">Gone in 12 min</span>
+    </div>
+    <div class="pol pol-3" aria-hidden="true">
+      <span class="pol-img">🎸</span>
+      <span class="pol-cap">Gone in 11 min</span>
+    </div>
     <blockquote class="manifesto-quote">
-      "<em>Your trash.</em> Another's treasure. It really is that simple."
+      Your trash. Another's <em>treasure</em>.<br>It really is that simple.
     </blockquote>
     <p class="manifesto-sub">Gone is built on a simple idea: free stuff should be dead easy to give away and dead easy to find.</p>
   </div>
 
   <!-- ==================== GONE PRO ==================== -->
-  <section class="section pro-section" id="pro">
+  <section class="pro-section" id="pro">
     <div class="pro-inner container">
-      <div class="pro-crown">⚡</div>
-      <h2 class="pro-title">Gone Pro</h2>
-      <p class="pro-sub">Get ahead of everyone else</p>
+      <div class="pro-layout">
+        <div class="pro-pitch">
+          <h2 class="pro-title reveal">Gone Pro ⚡</h2>
+          <p class="pro-sub reveal d1">Get ahead of everyone else. See new listings an hour before anyone, get pinged the second something drops, and run more listings of your own.</p>
+          <a href="https://apps.apple.com/au/app/gone/id6762592385" class="pro-dl-btn reveal d2" target="_blank" rel="noopener noreferrer">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+            </svg>
+            <div class="as-text-dark">
+              <span class="as-sub-dark">Get Gone Pro on the</span>
+              <span class="as-main-dark">App Store</span>
+            </div>
+          </a>
+        </div>
 
-      <div class="pro-grid">
-        <div class="pro-card reveal d1">
-          <div class="pro-icon-box">⚡</div>
-          <span class="pro-lbl">1 hour early access</span>
-        </div>
-        <div class="pro-card reveal d2">
-          <div class="pro-icon-box">🔔</div>
-          <span class="pro-lbl">Instant notifications</span>
-        </div>
-        <div class="pro-card reveal d3">
-          <div class="pro-icon-box">📍</div>
-          <span class="pro-lbl">Up to 10 alert zones</span>
-        </div>
-        <div class="pro-card reveal d4">
-          <div class="pro-icon-box">📦</div>
-          <span class="pro-lbl">10 active listings</span>
-        </div>
-        <div class="pro-card reveal d5">
-          <div class="pro-icon-box">⏱️</div>
-          <span class="pro-lbl">Extend listings</span>
-        </div>
-        <div class="pro-card reveal d6">
-          <div class="pro-icon-box">🔄</div>
-          <span class="pro-lbl">Relist expired items</span>
-        </div>
-      </div>
-
-      <div class="pro-bottom reveal">
-        <span class="pro-price">Subscription required · Cancel anytime</span>
-        <a href="https://apps.apple.com/au/app/gone/id6762592385" class="pro-dl-btn" target="_blank" rel="noopener noreferrer">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-            <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
-          </svg>
-          <div class="as-text-dark">
-            <span class="as-sub-dark">Get Gone Pro on the</span>
-            <span class="as-main-dark">App Store</span>
+        <div class="pro-pass reveal d2" aria-label="Gone Pro membership: subscription required, cancel anytime">
+          <div class="pass-head">
+            <span class="pass-word">Gone Pro ⚡</span>
+            <span class="pass-badge">MEMBER</span>
           </div>
-        </a>
+          <div class="pass-perk"><span class="pass-perk-ic">⚡</span>1 hour early access to new listings</div>
+          <div class="pass-perk"><span class="pass-perk-ic">🔔</span>Instant notifications</div>
+          <div class="pass-perk"><span class="pass-perk-ic">📍</span>Up to 10 alert zones</div>
+          <div class="pass-perk"><span class="pass-perk-ic">📦</span>10 active listings</div>
+          <div class="pass-perk"><span class="pass-perk-ic">⏱️</span>Extend your listings</div>
+          <div class="pass-perk"><span class="pass-perk-ic">🔄</span>Relist expired items</div>
+          <div class="pass-foot">
+            <span class="pass-price">Subscription required</span>
+            <span>Cancel anytime</span>
+          </div>
+        </div>
       </div>
     </div>
   </section>
